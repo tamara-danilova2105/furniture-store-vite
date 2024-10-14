@@ -1,0 +1,88 @@
+@import './fonts.scss';
+
+:root {
+    //color
+    --green-color: #214A25; 
+    --black-color: #242424; 
+    --secoundry-black-color: #484848;
+    --white-color: #FFF; 
+    --yellow-color: #FFBA35; 
+    --orange-color: #F57D0E;
+    --background-color: #F5F5F5;
+    --grey-background-color: #D9D9D9;
+    --background-color-footer-social: rgba(255, 255, 255, 0.13);
+    --stroke-color: rgba(36, 36, 36, 0.10); 
+    --card-liner-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 33.5%), rgba(0, 0, 0, 0.20);
+    --button-inStok-color: rgba(46, 187, 119, 0.10);
+    --border-inStock-color: #2EBB77;
+    --red-delete-cancel-color: #F04646;
+
+
+    //fonts
+    --font-family: 'Inter';
+
+    //font-size
+    --font-size-12: 12px;
+    --font-size-14: 14px;
+    --font-size-16: 16px; // navbar, regular text
+    --font-size-18: 18px; // header, card label, product timer, accordion description
+    --font-size-20: 20px;
+    --font-size-22: 22px; //crossed price,
+    --font-size-24: 24px; // header logo, card header, product timer number, accordion header
+    --font-size-26: 26px; // price, rating
+    --font-size-28: 28px;
+    --font-size-32: 32px;
+    --font-size-36: 36px;
+    --font-size-47: 47px;
+    --font-size-48: 48px; // main timer
+    --font-size-58: 58px;
+    --font-size-64: 64px;
+
+
+    //border-radius
+    --border-radius-8: 8px;
+    --border-radius-12: 12px;
+    --border-radius-16: 16px;
+    --border-radius-24: 24px;
+    --border-radius-50: 50px; //button, input
+    --border-radius-date: 16px 16px 0px 0px; //news&blog
+    --border-radius-170: 170px;
+    --border-radius-circle: 50%;
+
+    //border
+    --border-input: 1px solid var(--stroke-color);
+    --border-inStock: 1px var(--border-inStock-color);
+    --border-flashSale: 2px solid var(--white-color);
+    --border-todayDeals: 1.5px solid var(--stroke-color);
+    --border-date: 3.5px solid var(--white-color); 
+
+    //gap
+    
+    --gap-8: 8px; 
+    --gap-10: 10px; 
+    --gap-12: 12px;
+    --gap-16: 16px;
+    --gap-22: 22px;
+    --gap-26: 26px;
+    --gap-30: 30px;
+    --gap-32: 32px;
+    --gap-36: 36px;
+    --gap-48: 48px;
+    --gap-64: 64px;
+    --gap-75: 75px; 
+    --gap-125: 125px;
+
+
+    //opacity 
+    --opacity-01: 0.1;
+    --opacity-02: 0.2;
+    --opacity-05: 0.5;
+    --opacity-04: 0.4;
+    --opacity-06: 0.6;
+    --opacity-08: 0.8;
+
+    //filter 
+    --blur-7: 7px;
+    --blur-11: 11px;
+    --blur-28: 28px;
+} 

@@ -1,0 +1,12 @@
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+    } @return null;
+}
+
+$z-indexes: (
+    "modal-window",
+    "site-header",
+    "pseudo-element-icon",
+    "pseudo-element",
+);

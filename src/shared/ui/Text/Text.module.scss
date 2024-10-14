@@ -1,0 +1,45 @@
+@import '@/app/styles/media-queries.scss';
+
+$font-size-xs: var(--font-size-18);
+$font-size-s: var(--font-size-24);
+$font-size-md: var(--font-size-26);
+$font-size-xl: var(--font-size-32);
+$font-size-xxl: var(--font-size-36);
+
+$sizes: (
+    xs: $font-size-xs,
+    s: $font-size-s,
+    md: $font-size-md,
+    xl: $font-size-xl,
+    xxl: $font-size-xxl
+);
+
+@each $name, $size in $sizes {
+    .#{$name} {
+        font-size: $size;
+    }
+}
+
+$mobile-font-size-xs: var(--mobile-font-size-x);
+$mobile-font-size-s: var(--mobile-font-size-s);
+$mobile-font-size-md: var(--mobile-font-size-md);
+$mobile-font-size-xl: var(--mobile-font-size-xl);
+$mobile-font-size-xxl: var(--mobile-font-size-xxl);
+
+$mobile-sizes: (
+    xs: $mobile-font-size-xs,
+    s: $mobile-font-size-s,
+    md: $mobile-font-size-md,
+    xl: $mobile-font-size-xl,
+    xxl: $mobile-font-size-xxl
+);
+
+
+
+@include tablet-m {
+    @each $name, $size in $sizes {
+        .#{$name} {
+            font-size: calc(#{$size} * .9); 
+        }
+    }
+}

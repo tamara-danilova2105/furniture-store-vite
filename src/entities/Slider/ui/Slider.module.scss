@@ -1,0 +1,12 @@
+@import '@/app/styles/media-queries.scss';
+
+.div {
+    width: 550px;
+    height: 100%;
+    background-color: gray;
+    border-radius: 50px;
+
+    @include tablet-m {
+        display: none;
+    }
+}

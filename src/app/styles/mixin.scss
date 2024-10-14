@@ -1,0 +1,12 @@
+@import './z-index.scss';
+@import './media-queries';
+
+
+@mixin pseudo-element($display: block, $pos: absolute, $content: '', $visibility: visible, $z-index: auto){
+    content: $content;
+    display: $display;
+    position: $pos;
+    visibility: $visibility;
+    z-index: $z-index;
+}
+

@@ -1,0 +1,70 @@
+@import '@/app/styles/media-queries';
+
+//font-size
+
+$font-size-16: var(--font-size-16);
+$font-size-18: var(--font-size-18);
+$font-size-24: var(--font-size-24);
+
+//border-radius
+
+$border-radius-rounded: var(--border-radius-170);
+$border-radius-circle: var(--border-radius-circle);
+$border-radius-16: var(--border-radius-16);
+$border-radius-8: var(--border-radius-8);
+
+$sizes: (
+    xxs: $font-size-16,
+    xs: $font-size-18,
+    s: $font-size-24
+);
+
+@each $name, $size in $sizes {
+    .#{$name} {
+        font-size: $size;
+    }
+}
+
+$green-color: var(--green-color);
+$yelllow-color: var(--yellow-color);
+$stroke-color: var(--stroke-color);
+
+$text-white-color: var(--white-color);
+$text-black-color: var(--black-color);
+
+.button {
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.primary {
+    background-color: $green-color;
+    color: $text-white-color;
+}
+
+.secondary {
+    background-color: $yelllow-color;
+    color: $text-black-color;
+}
+
+.outlined {
+    background-color: transparent;
+    border: 1.5px solid $stroke-color;
+    color: $text-black-color;
+}
+
+.rounded {
+    border-radius: $border-radius-rounded;
+}
+
+.circle {
+    border-radius: $border-radius-circle;
+}
+
+.radius-m {
+    border-radius: $border-radius-16;
+
+    @include tablet-m {
+        border-radius: $border-radius-8;
+    }
+}
