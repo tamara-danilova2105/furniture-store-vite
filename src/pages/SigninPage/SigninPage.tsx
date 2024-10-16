@@ -1,4 +1,4 @@
-import { Signin } from "@/features/Sigin";
+import { Signin } from "@/features/Signin";
 import { Stack } from "@/shared/ui/Stack";
 import styles from './SigninPage.module.scss';
 import { Slider } from "@/entities/Slider";

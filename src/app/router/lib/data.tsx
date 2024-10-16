@@ -12,6 +12,7 @@ import {
     getRouteSignup 
 } from "./helper";
 import { SigninPage } from '@/pages/SigninPage';
+import { SignupPage } from "@/pages/SignupPage";
 
 export const routeConfig: Record<AppRouters, AppRoutesProps> = {
     [AppRouters.main]: {
@@ -56,5 +57,6 @@ export const routeConfig: Record<AppRouters, AppRoutesProps> = {
     },
     [AppRouters.signup]: {
         path: getRouteSignup(),
+        page: <SignupPage />
     }
 }

@@ -68,8 +68,6 @@ export const SigninForm = () => {
                 </Stack>
 
                 <Button 
-                    size="xs" 
-                    color="primary" 
                     type="submit" 
                     className={styles.signInBtn}
                 >
