@@ -12,12 +12,6 @@
     }
 }
 
-.logo {
-    @include tablet-m {
-        display: none;
-    }
-}
-
 .heading {
     font-weight: 600;
 }

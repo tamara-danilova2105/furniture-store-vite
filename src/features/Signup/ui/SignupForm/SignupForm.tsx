@@ -37,12 +37,14 @@ export const SignupForm = () => {
                         label="Имя"
                         type="text"
                         placeholder="Введите имя"
+                        name='firstname'
                         className={styles.firstname}
                     />
                     <Input
                         label="Фамилия"
                         type="text"
                         placeholder="Введите фамилию"
+                        name='lastname'
                     />
                 </Stack>
 
@@ -51,6 +53,7 @@ export const SignupForm = () => {
                     type="email"
                     placeholder="Введите адрес электронной почты"
                     className={styles.email}
+                    name='email'
                 />
 
                 <Stack direction='column' className={styles.password} max>
@@ -58,9 +61,12 @@ export const SignupForm = () => {
                         label="Пароль"
                         type={!showPassword ? 'password' : 'text'}
                         placeholder=" введите пароль"
+                        name='password'
                     />
-                    <button className={styles.password_btn}
-                        onClick={() => setShowPassword(!showPassword)}>
+                    <button 
+                        className={styles.password_btn}
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
                         {PasswordToggleIcon}
                     </button>
                 </Stack>
@@ -74,6 +80,7 @@ export const SignupForm = () => {
                         <span className={styles.customCheckbox}>
                             <CheckmarkIcon />
                         </span> Согласен с
+                        {/* TODO */}
                         <Link to='/' className={styles.linkAgree}> Условиями </Link> и 
                         <Link to='/' className={styles.linkAgree}> Политикой Конфиденциальности </Link>
                     </label>
@@ -86,11 +93,8 @@ export const SignupForm = () => {
                     Зарегистрироваться
                 </Button>
 
-                <Text type="p" size="xs" className={styles.account}>
-                    Уже есть аккаунт? 
-                    <Link to={getRouteSignin()} className={styles.signInLink}>
-                        Войти
-                    </Link>
+                <Text className={styles.account}>
+                    Уже есть аккаунт? <Link to={getRouteSignin()} className={styles.signInLink}>Войти</Link>
                 </Text>
             </Stack>
         </form>

@@ -20,14 +20,14 @@ export const SigninForm = () => {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
-            <Link className={styles.logo} to={getRouteMain()}>
+            <Link to={getRouteMain()}>
                 <LogoIcon />
             </Link>
             <Stack direction="column" gap='32' align='start'>
                 <Text type="h2" size="xl" className={styles.heading}>
                     Войти
                 </Text>
-                <Text type="p" size="xs" className={styles.par}>
+                <Text className={styles.par}>
                     Заполните данные для доступа к вашему аккаунту.
                 </Text>
 
@@ -35,6 +35,7 @@ export const SigninForm = () => {
                     label="Электронная почта"
                     type="email"
                     placeholder="Введите адрес электронной почты"
+                    name='email'
                 />
 
                 <Stack direction='column' className={styles.password}>
@@ -42,7 +43,7 @@ export const SigninForm = () => {
                         label="Пароль"
                         type={!showPassword ? 'password' : 'text'}
                         placeholder=" введите пароль"
-                        id="password"
+                        name='password'
                     />
                     <button 
                         className={styles.password_btn}
@@ -62,6 +63,7 @@ export const SigninForm = () => {
                             <CheckmarkIcon />
                         </span> запомнить меня
                     </label>
+                    {/* TODO */}
                     <Link to="/" className={styles.forgotPassword}>
                         Забыли пароль?
                     </Link>
@@ -74,11 +76,8 @@ export const SigninForm = () => {
                     Войти
                 </Button>
 
-                <Text type="p" size="xs" className={styles.account}>
-                    Нет аккаунта? 
-                    <Link to={getRouteSignup()} className={styles.signUpLink}>
-                        Зарегистрироваться
-                    </Link>
+                <Text className={styles.account}>
+                    Нет аккаунта? <Link to={getRouteSignup()} className={styles.signUpLink}>Зарегистрироваться</Link>
                 </Text>
             </Stack>
         </form>
