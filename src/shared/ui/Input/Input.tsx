@@ -1,6 +1,8 @@
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Input.module.scss';
 import { getStyles } from '@/shared/lib/getStyles';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { Stack } from '../Stack';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -12,31 +14,22 @@ interface InputProps extends HTMLInputProps {
     value?: string;
     placeholder?: string;
     label?: string;
-    error?: boolean;
-    errorMessage?: string;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    error?: FieldError;
+    register: UseFormRegisterReturn; 
 }
 
-export const Input = (props: InputProps) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, _) => {
     const {
         value,
-        onChange,
         className,
         label,
-        error = false,
-        errorMessage = '',
+        error,
+        register,
         ...otherProps
     } = props;
 
-    const [defaultValue, setDefaultValue] = useState(value);
-
-    const handlerInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setDefaultValue(e.target.value);
-        onChange?.(e);           
-    };
-
     const mode = {
-        [styles.error]: error,
+        [styles.error]: !!error,
     };
 
     const additional = [
@@ -46,15 +39,18 @@ export const Input = (props: InputProps) => {
     const inputClasses = getStyles(styles.input, mode, additional);
 
     return (
-        <div className={styles.inputWrapper}>
+        <Stack gap='16' max direction='column'>
             {label && <label className={styles.label}>{label}</label>}
-            <input
-                value={defaultValue}
-                onChange={handlerInput}
-                className={inputClasses}
-                {...otherProps}
-            />
-            {error && errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
-        </div>
+            <Stack gap='8' max direction='column'>
+                <input
+                    className={inputClasses}
+                    {...register}
+                    {...otherProps}
+                />
+                <p className={styles.errorMessage}>
+                    {error ? error.message : ''}
+                </p>
+            </Stack>
+        </Stack>
     );
-};
+});

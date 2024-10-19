@@ -1,5 +1,5 @@
 import { Stack } from '@/shared/ui/Stack';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Text } from '@/shared/ui/Text';
 import { Input } from '@/shared/ui/Input';
@@ -9,17 +9,26 @@ import { HidePasswordIcon, ShowPasswordIcon } from '@/shared/assets/icons/passwo
 import { LogoIcon } from '@/shared/assets/icons/navbarIcons';
 import { CheckmarkIcon } from '@/shared/assets/icons/checkmarkIcon';
 import styles from './SigninForm.module.scss';
+import { data, emailRegex } from '@/shared/lib/validateInput';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormValues } from '../Signin';
 
-export const SigninForm = () => {
+interface SigninFormProps {
+    onSubmit: SubmitHandler<FormValues>
+}
+
+export const SigninForm = ({ onSubmit }: SigninFormProps) => {
     const [showPassword, setShowPassword] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormValues>();
+
     const PasswordToggleIcon = showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />;
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    };
-
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <Link to={getRouteMain()}>
                 <LogoIcon />
             </Link>
@@ -31,42 +40,51 @@ export const SigninForm = () => {
                     Заполните данные для доступа к вашему аккаунту.
                 </Text>
 
-                <Input
-                    label="Электронная почта"
-                    type="email"
-                    placeholder="Введите адрес электронной почты"
-                    name='email'
-                />
-
-                <Stack direction='column' className={styles.password}>
+                <Stack direction='column' gap='8' max>
                     <Input
-                        label="Пароль"
-                        type={!showPassword ? 'password' : 'text'}
-                        placeholder=" введите пароль"
-                        name='password'
+                        label="Электронная почта"
+                        type="email"
+                        placeholder="Введите адрес электронной почты"
+                        register={register("email", {
+                            required: data.required,
+                            pattern: {
+                                value: emailRegex,
+                                message: data.errors.validEmail
+                            }
+                        })} 
+                        error={errors.email}
                     />
-                    <button 
-                        className={styles.password_btn}
-                        onClick={() => setShowPassword(!showPassword)}
-                    >
-                        {PasswordToggleIcon}
-                    </button>
-                </Stack>
 
-                <Stack justify='between' align="center" max>
-                    <label className={styles.checkbox}>
-                        <input
-                            type="checkbox"
-                            className={styles.hiddenCheckbox} 
+                    <Stack direction='column' className={styles.password}>
+                        <Input
+                            label='password' 
+                            placeholder="Введите пароль"
+                            register={register("password", {required: data.required})} 
+                            error={errors.password}
                         />
-                        <span className={styles.customCheckbox}>
-                            <CheckmarkIcon />
-                        </span> запомнить меня
-                    </label>
-                    {/* TODO */}
-                    <Link to="/" className={styles.forgotPassword}>
-                        Забыли пароль?
-                    </Link>
+                        <button 
+                            className={styles.password_btn}
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {PasswordToggleIcon}
+                        </button>
+                    </Stack>
+
+                    <Stack justify='between' align="center" max>
+                        <label className={styles.checkbox}>
+                            <input
+                                type="checkbox"
+                                className={styles.hiddenCheckbox} 
+                            />
+                            <span className={styles.customCheckbox}>
+                                <CheckmarkIcon />
+                            </span> запомнить меня
+                        </label>
+                        {/* TODO */}
+                        <Link to="/" className={styles.forgotPassword}>
+                            Забыли пароль?
+                        </Link>
+                    </Stack>
                 </Stack>
 
                 <Button 

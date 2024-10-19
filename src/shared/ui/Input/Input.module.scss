@@ -17,13 +17,6 @@
     }
 }
 
-.inputWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
 .label {
     font-size: var(--font-size-20);
     font-family: var(--font-family);
@@ -37,4 +30,5 @@
 
 .errorMessage {
     color: var(--red-delete-cancel-color);
+    height: 18px;
 }
