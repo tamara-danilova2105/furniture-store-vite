@@ -1,10 +1,13 @@
+import { Advantages } from "@/entities/Advantages";
 import { Header } from "@/entities/Header";
+import { Stack } from "@/shared/ui/Stack";
 
 const MainPage = () => {
     return (
-        <main>
+        <Stack tag='main' direction='column' gap='48'>
             <Header />
-        </main>
+            <Advantages />
+        </Stack>
     );
 };
 
