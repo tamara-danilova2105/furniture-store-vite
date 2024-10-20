@@ -33,11 +33,6 @@
     }
 }
 
-
-.signUpBtn {
-    padding: 16px;
-}
-
 .account {
     font-weight: 500;
     color: var(--black-color);
@@ -62,7 +57,7 @@
 .password_btn {
     background: none;
     position: absolute;
-    top: 50px;
+    top: 48px;
     right: 24px;
 }
 
@@ -106,15 +101,15 @@
     .hiddenCheckbox:checked + .customCheckbox img {
         display: block;
     }
+}
 
-    .linkAgree {
-        color: var(--black-color);
-        text-decoration: none;
+.linkAgree {
+    color: var(--green-color);
+    font-weight: 500;
+    text-decoration: none;
 
-        &:hover {
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            text-decoration-color: var(--black-color);
-        }
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 }

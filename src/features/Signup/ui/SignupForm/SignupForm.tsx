@@ -5,13 +5,13 @@ import { getRouteMain, getRouteSignin } from '@/app/router/lib/helper';
 import { Stack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 import { Input } from '@/shared/ui/Input';
-import { CheckmarkIcon } from '@/shared/assets/icons/checkmarkIcon';
 import { Button } from '@/shared/ui/Button';
 import { HidePasswordIcon, ShowPasswordIcon } from '@/shared/assets/icons/passwordIcons';
 import styles from './SignupForm.module.scss';
 import { FormValues } from '../Signup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { data, emailRegex } from '@/shared/lib/validateInput';
+import { Checkbox } from '@/shared/ui/Checkbox';
 
 interface SignupFormProps {
     onSubmit: SubmitHandler<FormValues>
@@ -21,6 +21,7 @@ export const SignupForm = (props: SignupFormProps) => {
     const { onSubmit } = props;
 
     const [showPassword, setShowPassword] = useState(false);
+    const [agreeWithTerms, setAgreeWithTerms] = useState(false); //TODO
 
     const {
         register,
@@ -29,6 +30,11 @@ export const SignupForm = (props: SignupFormProps) => {
     } = useForm<FormValues>();
 
     const PasswordToggleIcon = showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />;
+
+    const handleCheckboxChange = (name: string, checked: boolean) => {
+        console.log(name);
+        setAgreeWithTerms(checked);
+    }; //TODO
 
     return (
         <form 
@@ -95,18 +101,16 @@ export const SignupForm = (props: SignupFormProps) => {
                     </Stack>
 
                     <Stack justify='between' align="center">
-                        <label className={styles.checkbox}>
-                            <input
-                                type="checkbox"
-                                className={styles.hiddenCheckbox}
-                            />
-                            <span className={styles.customCheckbox}>
-                                <CheckmarkIcon />
-                            </span> Согласен с
+                        <Checkbox
+                            checked={agreeWithTerms} 
+                            name='agree' 
+                            onChange={handleCheckboxChange} 
+                        >
+                            Согласен с 
                             {/* TODO */}
                             <Link to='/' className={styles.linkAgree}> Условиями </Link> и 
                             <Link to='/' className={styles.linkAgree}> Политикой Конфиденциальности </Link>
-                        </label>
+                        </Checkbox>
                     </Stack>
                 </Stack>
 

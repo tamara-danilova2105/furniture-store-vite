@@ -1,26 +1,27 @@
-import { Stack } from '@/shared/ui/Stack';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { getRouteMain, getRouteSignup } from '@/app/router/lib/helper';
+import { Stack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
-import { getRouteMain, getRouteSignup } from '@/app/router/lib/helper';
 import { HidePasswordIcon, ShowPasswordIcon } from '@/shared/assets/icons/passwordIcons';
 import { LogoIcon } from '@/shared/assets/icons/navbarIcons';
-import { CheckmarkIcon } from '@/shared/assets/icons/checkmarkIcon';
-import styles from './SigninForm.module.scss';
 import { data, emailRegex } from '@/shared/lib/validateInput';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Checkbox } from '@/shared/ui/Checkbox';
 import { FormValues } from '../Signin';
+import styles from './SigninForm.module.scss';
 
 interface SigninFormProps {
     onSubmit: SubmitHandler<FormValues>
-}
+};
 
 export const SigninForm = (props: SigninFormProps) => {
     const { onSubmit } = props;
 
     const [showPassword, setShowPassword] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false); //TODO
 
     const {
         register,
@@ -29,6 +30,11 @@ export const SigninForm = (props: SigninFormProps) => {
     } = useForm<FormValues>();
 
     const PasswordToggleIcon = showPassword ? <HidePasswordIcon /> : <ShowPasswordIcon />;
+
+    const handleCheckboxChange = (name: string, checked: boolean) => {
+        console.log(name);
+        setRememberMe(checked);
+    }; //TODO
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -74,15 +80,14 @@ export const SigninForm = (props: SigninFormProps) => {
                     </Stack>
 
                     <Stack justify='between' align="center" max>
-                        <label className={styles.checkbox}>
-                            <input
-                                type="checkbox"
-                                className={styles.hiddenCheckbox} 
-                            />
-                            <span className={styles.customCheckbox}>
-                                <CheckmarkIcon />
-                            </span> запомнить меня
-                        </label>
+                        <Checkbox
+                            checked={rememberMe} 
+                            name='remember' 
+                            onChange={handleCheckboxChange} 
+                        >
+                            запомнить меня
+                        </Checkbox>
+
                         {/* TODO */}
                         <Link to="/" className={styles.forgotPassword}>
                             Забыли пароль?
