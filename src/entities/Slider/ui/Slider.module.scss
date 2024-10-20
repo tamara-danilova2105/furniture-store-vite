@@ -6,7 +6,7 @@
     background-color: gray;
     border-radius: 50px;
 
-    @include tablet-m {
+    @include tablet-l {
         display: none;
     }
 }

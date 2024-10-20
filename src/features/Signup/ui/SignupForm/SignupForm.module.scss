@@ -1,25 +1,13 @@
-@import '@/app/styles/media-queries.scss';
+@import '@/app/styles/mixin.scss';
 
 .form {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    @include tablet-m {
-        max-width: 90%;
-        padding: 70px 24px;
-    }
+    @include auth_form;
 }
 
 .logo {
     @include tablet-m {
         display: none;
     }
-}
-
-.heading {
-    font-weight: 600;
 }
 
 .par {

@@ -10,3 +10,35 @@
     z-index: $z-index;
 }
 
+@mixin auth-page {
+    height: 100vh;
+    padding: 30px 150px;
+
+    @include tablet-l {
+        justify-content: center;
+    }
+
+    @include tablet-m {
+        padding: 30px 100px;
+    }
+
+    @include mobile-xl {
+        padding: 20px;
+    }
+
+    @include mobile-m {
+        padding: 10px;
+    }
+}
+
+@mixin auth_form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include tablet-l {
+        width: 90%;
+    }
+}
+

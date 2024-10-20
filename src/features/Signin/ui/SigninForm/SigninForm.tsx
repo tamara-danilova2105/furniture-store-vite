@@ -42,7 +42,7 @@ export const SigninForm = (props: SigninFormProps) => {
                 <LogoIcon />
             </Link>
             <Stack direction="column" gap='32' align='start'>
-                <Text type="h2" size="xl" className={styles.heading}>
+                <Text type="h2" size="xl">
                     Войти
                 </Text>
                 <Text className={styles.par}>

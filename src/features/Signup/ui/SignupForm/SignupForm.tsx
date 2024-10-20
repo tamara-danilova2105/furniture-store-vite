@@ -46,7 +46,7 @@ export const SignupForm = (props: SignupFormProps) => {
             </Link>
 
             <Stack direction="column" gap="32">
-                <Text type="h2" size="xl" className={styles.heading}>
+                <Text type="h2" size="xl">
                     Регистрация
                 </Text>
 
