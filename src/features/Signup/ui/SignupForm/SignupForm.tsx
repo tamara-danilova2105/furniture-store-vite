@@ -121,7 +121,7 @@ export const SignupForm = (props: SignupFormProps) => {
                     Зарегистрироваться
                 </Button>
 
-                <Text className={styles.account}>
+                <Text>
                     Уже есть аккаунт? <Link to={getRouteSignin()} className={styles.signInLink}>Войти</Link>
                 </Text>
             </Stack>

@@ -102,7 +102,7 @@ export const SigninForm = (props: SigninFormProps) => {
                     Войти
                 </Button>
 
-                <Text className={styles.account}>
+                <Text>
                     Нет аккаунта? <Link to={getRouteSignup()} className={styles.signUpLink}>Зарегистрироваться</Link>
                 </Text>
             </Stack>
