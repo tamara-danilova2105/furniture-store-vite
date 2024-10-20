@@ -17,8 +17,11 @@ interface SigninFormProps {
     onSubmit: SubmitHandler<FormValues>
 }
 
-export const SigninForm = ({ onSubmit }: SigninFormProps) => {
+export const SigninForm = (props: SigninFormProps) => {
+    const { onSubmit } = props;
+
     const [showPassword, setShowPassword] = useState(false);
+
     const {
         register,
         handleSubmit,
